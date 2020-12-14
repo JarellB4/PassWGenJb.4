@@ -101,7 +101,7 @@ function generatePassword(){
 var length = prompt("length of password?");
  while(length < 8 || length > 128){
   alert("password must be between 8-128 characters");
-  var length = (prompt("length of password?"))
+  var length = prompt("length of password?");
  }
 
 
@@ -111,7 +111,17 @@ var upper = confirm("do you want upper case letters?");
 var number = confirm("do you want numbers?");
 var special = confirm("do you want special characters letters?");
 
+while( lower===false && upper===false && number===false && special===false){
+  alert("password must have at least one uppercase, one lowercase, one number, and  one special characters ")
+  var lower = confirm("do you want lower case letters?");
+  var upper = confirm("do you want upper case letters?");
+  var number = confirm("do you want numbers?");
+  var special = confirm("do you want special characters letters?");
 
+}
+
+
+alert
 if(lower){
   //concat
   char = char.concat(lowerCasedCharacters)
