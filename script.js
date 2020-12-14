@@ -93,19 +93,24 @@ var upperCasedCharacters = [
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
-
 function generatePassword(){
   var char = [];
-//series of prompts
-//length of password
+
+
+  //length of password
 var length = prompt("length of password?");
-//user options
+ while(length < 8 || length > 128){
+  alert("password must be between 8-128 characters");
+  var length = (prompt("length of password?"))
+ }
+
+
+//series of prompts
 var lower = confirm("do you want lower case letters?");
 var upper = confirm("do you want upper case letters?");
 var number = confirm("do you want numbers?");
 var special = confirm("do you want special characters letters?");
-console.log(length, lower, upper, number, special);
+
 
 if(lower){
   //concat
