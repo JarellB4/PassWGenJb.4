@@ -93,54 +93,70 @@ var upperCasedCharacters = [
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-function generatePassword(){
-  var char = [];
+function generatePassword() {
 
 
   //length of password
-var length = prompt("length of password?");
- while(length < 8 || length > 128){
-  alert("password must be between 8-128 characters");
   var length = prompt("length of password?");
- }
+  while (length < 8 || length > 128) {
+    alert("password must be between 8-128 characters");
+    var length = prompt("length of password?");
+  }
 
 
-//series of prompts
-var lower = confirm("do you want lower case letters?");
-var upper = confirm("do you want upper case letters?");
-var number = confirm("do you want numbers?");
-var special = confirm("do you want special characters letters?");
-
-while( lower===false && upper===false && number===false && special===false){
-  alert("password must have at least one uppercase, one lowercase, one number, and  one special characters ")
+  //series of prompts
   var lower = confirm("do you want lower case letters?");
   var upper = confirm("do you want upper case letters?");
   var number = confirm("do you want numbers?");
   var special = confirm("do you want special characters letters?");
 
+  while (lower === false && upper === false && number === false && special === false) {
+    alert("password must have at least one uppercase, one lowercase, one number, and  one special characters ");
+    var lower = confirm("do you want lower case letters?");
+    var upper = confirm("do you want upper case letters?");
+    var number = confirm("do you want numbers?");
+    var special = confirm("do you want special characters letters?");
+  }
+
+  // Concat section for arrays
+  var char = []
+
+  if (lower) {
+    char = char.concat(lowerCasedCharacters)
+  }
+
+
+  if (number) {
+    char = char.concat(numericCharacters)
+  }
+
+  if (upper) {
+    char = char.concat(upperCasedCharacters)
+  }
+
+  if (special) {
+    char = char.concat(specialCharacters)
+  }
+
+
+  var randomNum = Math.floor(Math.random() * upperCasedCharacters.length);
+  console.log(Genp(char, length))
+ 
+  return Genp(char, length)
+}
+
+function Genp(RandomG, Userinput) {
+  var Storage = ""
+  for (let index = 0; index < Userinput; index++) {
+
+    Storage = Storage.concat(RandomG[Math.floor(Math.random() * RandomG.length)-1])
+  }
+  return Storage
 }
 
 
-alert
-if(lower){
-  //concat
-  char = char.concat(lowerCasedCharacters)
-}
-
-if(number){
-  char = char.concat(numericCharacters)
-}
-
-var randomNum = Math.floor(Math.random() * upperCasedCharacters.length);
-console.log(randomNum)
-var letter = upperCasedCharacters[randomNum]
-var letter = lowerCasedCharacters[randomNum]
-var numbers = numbers[randomNum]
-var special = specialCharacters[randomNum]
 
 
-
-}
 
 // Write password to the #password input
 function writePassword() {
@@ -179,4 +195,4 @@ generateBtn.addEventListener("click", writePassword);
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+// THEN the password is either displayed in an alert or written to the s
